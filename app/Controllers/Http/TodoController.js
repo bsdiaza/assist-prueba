@@ -3,10 +3,16 @@
 const axios = require('axios')
 
 class TodoController {
-  async getTodos({ params, response }){
-    const status = params.status
-    let query = status == 'completed' ? '?completed=true' : ''
-    await axios.get()
+  async getTodos({ request, response }){
+    const { completed } = request.get()
+    let query = completed ? `?completed=${completed}` : ''
+    const url = `https://jsonplaceholder.typicode.com/todos${query}`
+    await axios.get(url)
+      .then(res=>{
+        return response.json(res.data)
+      }).catch(err=>{
+        return response.json({ error: "Ha ocurrido un error", api_response = err.response.statusText })
+      })
   }
 }
 

@@ -26,8 +26,8 @@ Route.post('/api/login', 'UserController.login')
 Route.post('/api/vehicle', 'VehicleController.registerVehicle')
 Route.get('/api/vehicle', 'VehicleController.getVehicles')
 Route.get('/api/vehicle/:id', 'VehicleController.getVehicle')
-Route.put('/api/vehicle', 'VehicleController.getVehicles')
+Route.put('/api/vehicle/:id', 'VehicleController.updateVehicle')
 Route.delete('/api/vehicle/:id', 'VehicleController.deleteVehicle')
 
-/* ------------------ Vehicle Routes ------------------ */
-
+/* ------------------ Todos Routes ------------------ */
+Route.get('/api/todos', 'TodoController.getTodos')
